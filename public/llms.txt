@@ -1,0 +1,29 @@
+# SCRAPYR
+
+> AI-powered web data extraction as a service. Give it any URL and what you want — it returns clean JSON/CSV, runs on a schedule, and alerts you when data changes.
+
+## What is SCRAPYR?
+SCRAPYR (scrapyr.kryv.network) is the data extraction backbone of the KRYV Network. It powers NodeMeld's SaaS discovery, VELQA's site auditing, and KRYVLayer's keyword research — and is available as a standalone SaaS for anyone.
+
+## Core Features
+- AI-powered schema detection (no selectors needed)
+- Outputs: JSON, CSV, Webhook, RSS feed
+- Scheduled scraping (hourly, daily, weekly, on-change)
+- Change detection alerts via Discord, Slack, Pushover, ntfy.sh
+- Uses OpenClaw / Multion agents for JS-heavy sites
+- REST API + no-code UI
+
+## KRYV Integration
+NodeMeld → SCRAPYR (discover new indie SaaS)
+VELQA → SCRAPYR (audit competitor sites for GEO gaps)
+KRYVLayer → SCRAPYR (pull competitor keywords for page generation)
+
+## Key URLs
+- App: https://scrapyr.kryv.network
+- API: https://scrapyr-api.kryv.workers.dev
+- Docs: https://scrapyr.kryv.network/docs
+
+## AI Crawler Permissions
+GPTBot: Allow / Claude-Web: Allow / PerplexityBot: Allow / anthropic-ai: Allow
+
+*Part of KRYV Network — kryv.network*

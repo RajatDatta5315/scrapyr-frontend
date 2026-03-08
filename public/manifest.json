@@ -1,0 +1,10 @@
+{
+  "name": "SCRAPYR — AI Web Data Extraction",
+  "short_name": "SCRAPYR",
+  "description": "Extract structured data from any website. AI-powered, schedule-ready, no code needed.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05050a",
+  "theme_color": "#00ff88",
+  "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+}

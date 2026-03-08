@@ -1,0 +1,8 @@
+product: SCRAPYR
+type: AI Web Data Extraction SaaS
+url: https://scrapyr.kryv.network
+category: Developer Tools, Data, Automation
+network: KRYV Network
+tech: Cloudflare Workers, Groq AI, OpenClaw agents
+pricing: Freemium
+status: Building
