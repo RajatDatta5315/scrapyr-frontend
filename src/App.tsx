@@ -48,7 +48,7 @@ const EXAMPLES = [
 const ENDPOINTS = [
   {
     method: 'POST', path: '/extract',
-    desc: 'Extract structured data from any URL using Groq AI + OpenClaw web_fetch engine.',
+    desc: 'Extract structured data from any URL using Groq AI.',
     body: `{\n  "url":    "https://example.com",\n  "target": "product names and prices",\n  "format": "json",\n  "schedule":      "daily",\n  "alert_channel": "https://ntfy.sh/topic"\n}`,
     resp: `{\n  "job_id": "scr_abc123",\n  "status": "done",\n  "rows":   48,\n  "data":   [...],\n  "download_url": "..."\n}`,
   },
@@ -184,11 +184,8 @@ const App: React.FC = () => {
           <Badge label="Public Beta" variant="violet" />
         </div>
 
-        {/* OpenClaw status + status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="hide-mobile">
-          <div className="openclaw-pill">
-            <span className="oc-dot" />
-            OpenClaw v2
+        <div style={{ padding: '3px 10px', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.22)', borderRadius: 100, fontSize: 9, fontFamily: "'Space Mono',monospace", letterSpacing: '0.1em', color: '#22c55e' }}>
+            GROQ ACTIVE
           </div>
           <motion.div
             animate={{ opacity: [0.7, 1, 0.7] }}
@@ -228,7 +225,7 @@ const App: React.FC = () => {
               <motion.div variants={stagger} initial="hidden" animate="show" style={{ marginBottom: 44 }}>
                 <motion.div variants={fadeUp} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                   <span style={{ width: 32, height: 1, background: 'linear-gradient(90deg, var(--violet), transparent)' }} />
-                  <span style={{ fontSize: 9.5, fontFamily: "'Space Mono',monospace", letterSpacing: '0.22em', color: 'rgba(168,85,247,0.7)', textTransform: 'uppercase' }}>Powered by OpenClaw + Groq Llama-3.3-70b</span>
+                  <span style={{ fontSize: 9.5, fontFamily: "'Space Mono',monospace", letterSpacing: '0.22em', color: 'rgba(168,85,247,0.7)', textTransform: 'uppercase' }}>Powered by Groq Llama-3.3-70b</span>
                 </motion.div>
                 <motion.h1 variants={fadeUp} style={{
                   fontFamily: "'Unbounded',sans-serif",
@@ -241,7 +238,7 @@ const App: React.FC = () => {
                   <span style={{ background: 'linear-gradient(120deg, var(--violet) 0%, var(--blue) 60%, var(--teal) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>From any site.</span>
                 </motion.h1>
                 <motion.p variants={fadeUp} style={{ fontSize: 14, color: 'var(--text-2)', maxWidth: 540, lineHeight: 1.75 }}>
-                  Describe what you need in plain English. SCRAPYR fetches the page via the OpenClaw web_fetch engine, runs Groq AI schema detection, and returns clean structured data in seconds.
+                  Describe what you need in plain English. SCRAPYR fetches the page, runs Groq AI schema detection, and returns clean structured data in seconds.
                 </motion.p>
               </motion.div>
 
@@ -404,13 +401,13 @@ const App: React.FC = () => {
                             AI is reading the page
                           </div>
                           <div style={{ fontSize: 11, color: 'var(--text-3)', fontFamily: "'Space Mono',monospace", lineHeight: 1.9 }}>
-                            OpenClaw web_fetch active<br />
+                            Groq AI active<br />
                             Groq Llama-3.3-70b processing<br />
                             Schema detection running
                           </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 9, width: 210 }}>
-                          {['Fetching HTML via OpenClaw', 'Stripping noise', 'AI schema detection', 'Formatting output'].map((step, i) => (
+                          {['Fetching HTML', 'Stripping noise', 'AI schema detection', 'Formatting output'].map((step, i) => (
                             <motion.div key={step}
                               initial={{ opacity: 0, x: -8 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -478,12 +475,12 @@ const App: React.FC = () => {
                 style={{ marginTop: 60, paddingTop: 44, borderTop: '1px solid var(--border)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                   <div style={{ fontSize: 10, fontFamily: "'Space Mono',monospace", color: 'var(--text-3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Architecture</div>
-                  <div className="openclaw-pill"><span className="oc-dot" />OpenClaw Gateway Active</div>
+                  <div style={{ display:"inline-flex", alignItems:"center", gap:6, padding:"3px 12px", background:"rgba(34,197,94,0.1)", border:"1px solid rgba(34,197,94,0.22)", borderRadius:100, fontSize:9, fontFamily:"'Space Mono',monospace", letterSpacing:"0.1em", color:"#22c55e" }}><span style={{width:5,height:5,borderRadius:"50%",background:"#22c55e"}}/>GROQ ACTIVE</div>
                 </div>
 
                 <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14 }}>
                   {[
-                    { icon: Globe,    step: '01', title: 'OpenClaw Fetch', desc: 'Pages are fetched via the OpenClaw web_fetch engine — handles JavaScript rendering, strips noise, preserves semantic structure.' },
+                    { icon: Globe,    step: '01', title: 'Fetch Page', desc: 'Pages are fetched via Cloudflare Workers — strips noise, preserves semantic structure, handles most modern sites.' },
                     { icon: Sparkles, step: '02', title: 'Groq AI Schema', desc: 'Llama-3.3-70b reads stripped content and infers the exact schema you described in plain English with high accuracy.' },
                     { icon: Database, step: '03', title: 'Clean Output',   desc: 'Results are stored in Cloudflare D1 and returned as structured JSON or CSV, ready for any downstream pipeline.' },
                   ].map(({ icon: Icon, step, title, desc }) => (
@@ -521,10 +518,10 @@ const App: React.FC = () => {
                   <div>
                     <div style={{ fontFamily: "'Unbounded',sans-serif", fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 7, letterSpacing: '-0.01em' }}>KRYV Network Integration</div>
                     <div style={{ fontSize: 12, color: 'var(--text-2)', lineHeight: 1.8 }}>
-                      NodeMeld uses SCRAPYR to discover new SaaS from Product Hunt and Reddit hourly. VELQA uses it to audit competitor GEO files. KRYVLayer pulls competitor keyword clusters for programmatic page generation. Every KRYV OpenClaw agent has SCRAPYR as a built-in tool.
+                      NodeMeld uses SCRAPYR to discover new SaaS from Product Hunt and Reddit hourly. VELQA uses it to audit competitor GEO files. KRYVLayer pulls competitor keyword clusters for programmatic page generation. Every KRYV project can use SCRAPYR as a built-in data layer.
                     </div>
                     <div style={{ display: 'flex', gap: 7, marginTop: 14, flexWrap: 'wrap' }}>
-                      {['NodeMeld', 'VELQA', 'KRYVLayer', 'VIGILIS', 'OpenClaw'].map(p => (
+                      {['NodeMeld', 'VELQA', 'KRYVLayer', 'VIGILIS', 'DevMasiha'].map(p => (
                         <Badge key={p} label={p} variant="blue" />
                       ))}
                     </div>
@@ -585,7 +582,7 @@ const App: React.FC = () => {
               <div style={{ marginBottom: 36 }}>
                 <h2 style={{ fontFamily: "'Unbounded',sans-serif", fontSize: 20, fontWeight: 700, letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: 8 }}>API Reference</h2>
                 <p style={{ fontSize: 13, color: 'var(--text-2)', marginBottom: 16 }}>
-                  Use SCRAPYR programmatically from any KRYV agent or external service. OpenClaw agents can call SCRAPYR as a built-in tool via SKILL.md discovery.
+                  Use SCRAPYR programmatically from any KRYV project or external service via the REST API.
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: 'var(--blue-d)', border: '1px solid var(--border-b)', borderRadius: 10 }}>
                   <span style={{ fontSize: 10, fontFamily: "'Space Mono',monospace", color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Base URL</span>
@@ -618,23 +615,23 @@ const App: React.FC = () => {
                 ))}
               </motion.div>
 
-              {/* OpenClaw skill integration */}
+              {/* KRYV Network integration */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
                 className="glass-violet"
                 style={{ marginTop: 20, padding: '22px 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                  <div className="openclaw-pill"><span className="oc-dot" />OpenClaw Skill</div>
-                  <Badge label="SKILL.md" variant="teal" />
+                  <Badge label="KRYV NETWORK" variant="violet" />
+                  <Badge label="INTERNAL TOOL" variant="teal" />
                 </div>
                 <p style={{ fontSize: 12, color: 'var(--text-2)', lineHeight: 1.8, marginBottom: 14 }}>
-                  Any OpenClaw-compatible agent can call SCRAPYR as a built-in tool. The agent reads the SKILL.md in the scrapyr-backend repo and discovers the extract, jobs, and download tools automatically. No per-project scraping boilerplate needed.
+                  Every KRYV project uses SCRAPYR as its data layer. NodeMeld discovers new SaaS hourly. VELQA audits competitor GEO files. KRYVLayer pulls keyword clusters. Call SCRAPYR from any project via the REST API.
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <a href="https://openclaw.ai" target="_blank" rel="noreferrer"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--teal)', textDecoration: 'none', fontWeight: 600 }}>
-                    openclaw.ai <ArrowUpRight size={12} />
+                  <a href="https://scrapyr.kryv.network" target="_blank" rel="noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--violet)', textDecoration: 'none', fontWeight: 600 }}>
+                    scrapyr.kryv.network <ArrowUpRight size={12} />
                   </a>
                   <a href="https://kryv.network" target="_blank" rel="noreferrer"
                     style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--text-2)', textDecoration: 'none', fontWeight: 600 }}>
@@ -643,7 +640,7 @@ const App: React.FC = () => {
                 </div>
               </motion.div>
 
-              {/* OpenClaw install instructions */}
+              {/* Quick start */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 }}
@@ -651,22 +648,19 @@ const App: React.FC = () => {
                 style={{ marginTop: 14, padding: '22px 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 12 }}>
                   <Terminal size={14} color="var(--blue)" />
-                  <span style={{ fontFamily: "'Unbounded',sans-serif", fontSize: 12, fontWeight: 600, color: 'var(--blue)', letterSpacing: '-0.01em' }}>Run OpenClaw Locally</span>
+                  <span style={{ fontFamily: "'Unbounded',sans-serif", fontSize: 12, fontWeight: 600, color: 'var(--blue)', letterSpacing: '-0.01em' }}>Quick Start</span>
                 </div>
                 <p style={{ fontSize: 12, color: 'var(--text-2)', lineHeight: 1.75, marginBottom: 14 }}>
-                  Install OpenClaw on your Linux machine to use it as an AI agent gateway with web_fetch and browser automation. Once running, SCRAPYR can route extraction through your local OpenClaw instance.
+                  Start extracting data in seconds. No auth required for public URLs.
                 </p>
-                <pre className="code-block">{`# Install OpenClaw
-curl -fsSL https://openclaw.ai/install.sh | bash
-
-# Configure with your AI provider key  
-openclaw configure
-
-# Start the gateway (runs on localhost:3000 by default)
-openclaw serve
-
-# Test web_fetch
-openclaw web_fetch https://producthunt.com`}</pre>
+                <pre className="code-block">{`# Extract structured data from any URL
+curl -X POST https://scrapyr-api.kryv.workers.dev/extract \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "url": "https://producthunt.com",
+    "query": "list all product names and upvote counts",
+    "format": "json"
+  }'`}</pre>
               </motion.div>
             </motion.div>
           )}
