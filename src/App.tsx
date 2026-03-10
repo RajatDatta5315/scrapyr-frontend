@@ -184,7 +184,8 @@ const App: React.FC = () => {
           <Badge label="Public Beta" variant="violet" />
         </div>
 
-        <div style={{ padding: '3px 10px', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.22)', borderRadius: 100, fontSize: 9, fontFamily: "'Space Mono',monospace", letterSpacing: '0.1em', color: '#22c55e' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ padding: '3px 10px', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.22)', borderRadius: 100, fontSize: 9, fontFamily: "'Space Mono',monospace", letterSpacing: '0.1em', color: '#22c55e' }}>
             GROQ ACTIVE
           </div>
           <motion.div
