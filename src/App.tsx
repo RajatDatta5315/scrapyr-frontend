@@ -7,7 +7,7 @@ import {
   Globe, Database, Clock, AlertTriangle, Play, Layers
 } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || 'https://scrapyr-api.kryv.workers.dev';
+const API = import.meta.env.VITE_API_URL || 'https://scrapyr-api.rajatdatta90000.workers.dev';
 
 interface Job {
   id: string; url: string; target: string;
@@ -589,7 +589,7 @@ const App: React.FC = () => {
                   <span style={{ fontSize: 10, fontFamily: "'Space Mono',monospace", color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Base URL</span>
                   <code style={{ fontSize: 12, fontFamily: "'Space Mono',monospace", color: 'var(--blue)' }}>https://scrapyr-api.kryv.workers.dev</code>
                   <button className="btn-ghost" style={{ marginLeft: 'auto', padding: '4px 10px', fontSize: 10 }}
-                    onClick={() => navigator.clipboard.writeText('https://scrapyr-api.kryv.workers.dev')}>
+                    onClick={() => navigator.clipboard.writeText('https://scrapyr-api.rajatdatta90000.workers.dev')}>
                     <Copy size={10} /> Copy
                   </button>
                 </div>
@@ -655,7 +655,7 @@ const App: React.FC = () => {
                   Start extracting data in seconds. No auth required for public URLs.
                 </p>
                 <pre className="code-block">{`# Extract structured data from any URL
-curl -X POST https://scrapyr-api.kryv.workers.dev/extract \\
+curl -X POST https://scrapyr-api.rajatdatta90000.workers.dev/extract \\
   -H "Content-Type: application/json" \\
   -d '{
     "url": "https://producthunt.com",
