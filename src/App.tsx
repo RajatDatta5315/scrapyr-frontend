@@ -372,9 +372,18 @@ const App: React.FC = () => {
                           <div>
                             <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--red)', marginBottom: 8 }}>Extraction Failed</div>
                             <div style={{ fontSize: 12, fontFamily: "'Space Mono',monospace", color: 'rgba(244,63,94,0.7)', lineHeight: 1.7, marginBottom: 12 }}>{error}</div>
-                            <div style={{ fontSize: 11, color: 'var(--text-3)', lineHeight: 1.7 }}>
-                              If this is a connection error, the backend Worker may not be deployed yet. Run <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 6px', borderRadius: 4, fontFamily: "'Space Mono',monospace", color: 'var(--text-2)' }}>wrangler deploy</code> from the scrapyr-backend directory.
-                            </div>
+                            {error.includes('500') || error.includes('GROQ') ? (
+                              <div style={{ fontSize: 11, color: 'var(--text-3)', lineHeight: 1.8, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, padding: '10px 14px' }}>
+                                <strong style={{ color: 'var(--text-2)', display: 'block', marginBottom: 6 }}>Fix: GROQ_API_KEY not set</strong>
+                                Run in terminal from <code style={{ color: 'var(--violet)', fontSize: 10 }}>scrapyr-backend/</code> dir:<br/>
+                                <code style={{ display: 'block', marginTop: 6, color: '#22d98a', fontSize: 11 }}>wrangler secret put GROQ_API_KEY</code>
+                                <span style={{ display: 'block', marginTop: 4, color: 'rgba(255,255,255,0.25)', fontSize: 10 }}>Paste your Groq API key from console.groq.com</span>
+                              </div>
+                            ) : (
+                              <div style={{ fontSize: 11, color: 'var(--text-3)', lineHeight: 1.7 }}>
+                                Backend Worker may not be deployed. Run <code style={{ background: 'rgba(255,255,255,0.06)', padding: '1px 6px', borderRadius: 4, fontFamily: "'Space Mono',monospace", color: 'var(--text-2)' }}>wrangler deploy</code> from the scrapyr-backend directory.
+                              </div>
+                            )}
                           </div>
                         </div>
                       </motion.div>
