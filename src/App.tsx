@@ -587,7 +587,7 @@ const App: React.FC = () => {
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: 'var(--blue-d)', border: '1px solid var(--border-b)', borderRadius: 10 }}>
                   <span style={{ fontSize: 10, fontFamily: "'Space Mono',monospace", color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Base URL</span>
-                  <code style={{ fontSize: 12, fontFamily: "'Space Mono',monospace", color: 'var(--blue)' }}>https://scrapyr-api.kryv.workers.dev</code>
+                  <code style={{ fontSize: 12, fontFamily: "'Space Mono',monospace", color: 'var(--blue)' }}>https://scrapyr-api.rajatdatta90000.workers.dev</code>
                   <button className="btn-ghost" style={{ marginLeft: 'auto', padding: '4px 10px', fontSize: 10 }}
                     onClick={() => navigator.clipboard.writeText('https://scrapyr-api.rajatdatta90000.workers.dev')}>
                     <Copy size={10} /> Copy
